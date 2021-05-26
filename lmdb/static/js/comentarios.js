@@ -90,3 +90,15 @@ $('#comentario_submit').on('click', function() {
 
     form.submit();
 });
+
+$('#novo_comentario_button').on('click', function() {
+    $('#modal_novo_comentario')
+      .modal('show')
+    ;
+});
+
+$('#novo_comentario_fecha_modal').on('click', function() {
+    $('#modal_novo_comentario')
+      .modal('hide')
+    ;
+});

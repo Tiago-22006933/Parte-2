@@ -1,0 +1,80 @@
+<div class="ui large modal" id="modal_novo_comentario">
+    <i class="close icon"></i>
+    <div class="content">
+        <form class="ui form" method="POST" id="comentario_form">
+            {% csrf_token %}
+            <div class="two fields">
+                <div class="field">
+                    <div class="field">
+                        <div class="two fields">
+                            <div class="field">
+                                <label>Clareza</label>
+                                <div class="ui star rating" data-rating="5" data-max-rating="10" id="rating_clareza"></div>
+                                {{ form.clareza }}
+                            </div>
+                            <div class="field">
+                                <label>Rigor</label>
+                                <div class="ui star rating" data-rating="5" data-max-rating="10" id="rating_rigor"></div>
+                                {{ form.rigor }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="two fields">
+                            <div class="field">
+                                <label>Precisão</label>
+                                <div class="ui star rating" data-rating="5" data-max-rating="10" id="rating_precisao"></div>
+                                {{ form.precisão }}
+                            </div>
+                            <div class="field">
+                                <label>Profundidade</label>
+                                <div class="ui star rating" data-rating="5" data-max-rating="10" id="rating_profundidade"></div>
+                                {{ form.profundidade }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="two fields">
+                            <div class="field">
+                                <label>Amplitude</label>
+                                <div class="ui star rating" data-rating="5" data-max-rating="10" id="rating_amplitude"></div>
+                                {{ form.amplitude }}
+                            </div>
+                            <div class="field">
+                                <label>Lógica</label>
+                                <div class="ui star rating" data-rating="5" data-max-rating="10" id="rating_logica"></div>
+                                {{ form.lógica }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="two fields">
+                            <div class="field">
+                                <label>Significância</label>
+                                <div class="ui star rating" data-rating="5" data-max-rating="10" id="rating_significancia"></div>
+                                {{ form.significância }}
+                            </div>
+                            <div class="field">
+                                <label>Originalidade</label>
+                                <div class="ui star rating" data-rating="5" data-max-rating="10" id="rating_originalidade"></div>
+                                {{ form.originalidade }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Globalidade</label>
+                        <div class="ui heart rating" data-rating="8" data-max-rating="10" id="rating_global"></div>
+                        {{ form.globalidade }}
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Comentário</label>
+                    <textarea maxlength="500" id="comentario_input"></textarea>
+                    {{ form.comentário }}
+                </div>
+            </div>
+            <button class="ui primary button" type="button" id="comentario_submit">Submeter</button>
+            <button class="ui button" type="reset" id="novo_comentario_fecha_modal">Cancelar</button>
+        </form>
+    </div>
+</div>
