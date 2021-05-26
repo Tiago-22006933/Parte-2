@@ -6,7 +6,26 @@
         A sua opinião
     </h2>
 
-    <button class="ui primary button" type="button" id="novo_comentario_button">Submeter</button>
+    <div class="ui grid">
+        <div class="eight wide centered column">
+            <div class="ui raised card">
+                <div class="image">
+                    <img src="https://h5p.org/sites/default/files/styles/medium-logo/public/logos/chart-icon-color.png?itok=kpLTYHHJ">
+                </div>
+                <div class="content">
+                    <div class="header">Gráfico</div>
+                </div>
+            </div>
+        </div>
+        <div class="eight wide centered column">
+            <div class="ui center aligned container">
+                <p>
+                    A sua opinião é importante para nós.
+                </p>
+                <button class="ui primary button" type="button" id="novo_comentario_button">Novo</button>
+            </div>
+        </div>
+    </div>
 
     {% block modal_novo_comentario %}{% include 'lmdb/modals/modal_novo_comentario.html' %}{% endblock modal_novo_comentario%}
 
