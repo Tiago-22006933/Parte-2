@@ -1,0 +1,27 @@
+<div class="ui modal" id="modal_edita_contacto">
+    <i class="close icon"></i>
+    <div class="header">Novo contacto</div>
+    <div class="content">
+        <form class="ui form" method="POST">
+            {% csrf_token %}
+            <div class="two fields">
+                <div class="field">
+                    <label>Primeiro nome</label>
+                    <input type="text" name="first_name" id="first_name_edit">
+                </div>
+                <div class="field">
+                    <label>Apelido</label>
+                    <input type="text" name="last_name" id="flast_name_edit">
+                </div>
+            </div>
+            <div class="field">
+                <label>Email</label>
+                <input type="email" name="email" id="email_edit">
+            </div>
+            <input type="hidden" name="edita_contacto_flag" id="edita_contacto_flag">
+            <input type="hidden" name="edita_contacto_id1" id="edita_contacto_id1">
+            <button class="ui primary button" type="submit">Alterar contacto</button>
+            <button class="ui button" type="reset" id="edita_contacto_fecha_modal">Cancelar</button>
+        </form>
+    </div>
+</div>

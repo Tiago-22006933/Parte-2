@@ -1,0 +1,26 @@
+{% extends 'lmdb/base.html' %}
+{% load static %}
+{% block main %}
+    <h2 class="ui center aligned icon header">
+        <i class="circular video icon"></i>
+        Plataformas de streaming
+    </h2>
+
+    <div class="ui four cards">
+        {% for streaming in streaming_plat %}
+            <div class="ui card">
+            <div class="image">
+                <img src="{{ streaming.imagem.url }}">
+            </div>
+            <div class="content">
+                <a class="header" href="{{ streaming.link }}" target="_blank">{{ streaming.nome }}</a>
+                <div class="description">
+                    {{ streaming.tipo }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <script src="{% static 'js/streaming.js' %}"></script>
+
+{% endblock %}

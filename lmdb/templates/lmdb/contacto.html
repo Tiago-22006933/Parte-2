@@ -1,0 +1,41 @@
+{% extends 'lmdb/base.html' %}
+{% load static %}
+{% block main %}
+
+    <h2 class="ui center aligned icon header">
+        <i class="circular address book outline icon"></i>
+        Contactos
+    </h2>
+
+    <table class="ui stripped table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th class="right aligned">Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contacto in contactos %}
+                <tr>
+                    <td>{{ contacto.first_name }}  {{ contacto.last_name }}</td>
+                    <td>{{ contacto.email }}</td>
+                    <td class="right aligned">
+                        <span><i class="edit outline icon editicon" id="{{ contacto.id }}"></i></span>
+                        <span><i class="trash alternate outline icon deleteicon" id="{{ contacto.id }}"></i></span>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button class="ui primary button" id="novo_contacto_button">
+        Adicionar contacto
+    </button>
+
+    {% block modal_novo_contacto %}{% include 'lmdb/modals/modal_novo_contacto.html' %}{% endblock modal_novo_contacto%}
+    {% block modal_edita_contacto %}{% include 'lmdb/modals/modal_edita_contacto.html' %}{% endblock modal_edita_contacto%}
+    {% block modal_apaga_contacto %}{% include 'lmdb/modals/modal_apaga_contacto.html' %}{% endblock modal_apaga_contacto%}
+
+    <script src="{% static 'js/contacto.js' %}"></script>
+
+{% endblock %}

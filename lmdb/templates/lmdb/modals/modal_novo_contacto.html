@@ -1,0 +1,25 @@
+<div class="ui modal" id="modal_novo_contacto">
+    <i class="close icon"></i>
+    <div class="header">Novo contacto</div>
+    <div class="content">
+        <form class="ui form" method="POST">
+            {% csrf_token %}
+            <div class="two fields">
+                <div class="field">
+                    <label>Primeiro nome</label>
+                    {{ form.first_name }}
+                </div>
+                <div class="field">
+                    <label>Apelido</label>
+                    {{ form.last_name }}
+                </div>
+            </div>
+            <div class="field">
+                <label>Email</label>
+                {{ form.email }}
+            </div>
+            <button class="ui primary button" type="submit">Criar contacto</button>
+            <button class="ui button" type="reset" id="novo_contacto_fecha_modal">Cancelar</button>
+        </form>
+    </div>
+</div>

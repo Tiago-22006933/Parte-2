@@ -1,0 +1,21 @@
+<div class="ui mini modal" id="modal_confirma_delete">
+    <i class="close icon"></i>
+    <div class="content">
+        <form class="ui form" method="POST">
+            {% csrf_token %}
+            <div class="field">
+                <h3 class="ui header">
+                    <i class="trash alternate outline icon"></i>
+                    <div class="content">
+                        Pretende apagar o contacto?
+                    </div>
+                </h3>
+            </div>
+            <div class="field">
+                <input type="hidden" name="contacto_id" id="contacto_id">
+            </div>
+            <button class="ui negative button" type="submit">Eliminar</button>
+            <button class="ui button" type="button" id="remove_contacto_fecha_modal">Cancelar</button>
+        </form>
+    </div>
+</div>

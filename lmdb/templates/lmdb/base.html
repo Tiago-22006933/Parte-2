@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}{% include 'lmdb/head.html' %}{% endblock head%}
+</head>
+<body>
+    <nav>
+        {% block navbar %}{% include 'lmdb/navbar.html' %}{% endblock navbar%}
+    </nav>
+    <main class="ui main container">
+        {% block main %}
+        {% endblock %}
+    </main>
+</body>
+</html>
