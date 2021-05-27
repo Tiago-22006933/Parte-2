@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 django = "*"
 form = "*"
+matplotlib = "*"
 
 [dev-packages]
 

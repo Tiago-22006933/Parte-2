@@ -8,7 +8,6 @@ from django.urls import reverse
 from .forms import NovoContactoForm, NovoComentarioForm
 from .models import Contacto, Comentario, Streaming
 
-
 def home_page_view(request):
 	return render(request, 'lmdb/home.html')
 
@@ -18,7 +17,7 @@ def streaming_page_view(request):
 	return render(request, 'lmdb/streaming.html', context)
 
 def pesquisa_page_view(request):
-	return render(request, 'lmdb/pesquisa.html')
+	return render(request, 'lmdb/filmes.html')
 
 def contacto_page_view(request):
 	form = NovoContactoForm(request.POST or None)

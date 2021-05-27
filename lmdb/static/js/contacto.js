@@ -59,7 +59,7 @@ $('.editicon').on('click', function() {
                 });
             });
         }
-      });
+    });
     $('#modal_edita_contacto')
       .modal('show')
     ;

@@ -8,7 +8,7 @@ class Contacto(models.Model):
     email = models.EmailField(max_length=60)
 
     def __str__(self):
-        return self.first_name + ' ' + self.last_name
+        return f"{self.first_name} {self.last_name}"
 
 class Comentario(models.Model):
     clareza = models.IntegerField(validators=[MinValueValidator(0),MaxValueValidator(10)])
@@ -33,3 +33,12 @@ class Streaming(models.Model):
 
     def __str__(self):
         return self.nome
+
+class Filme(models.Model):
+    pass
+
+class Actor(models.Model):
+    pass
+
+class Realizador(models.Model):
+    pass
