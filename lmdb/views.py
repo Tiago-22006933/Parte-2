@@ -16,7 +16,7 @@ def streaming_page_view(request):
 	print(Streaming.objects.all())
 	return render(request, 'lmdb/streaming.html', context)
 
-def pesquisa_page_view(request):
+def filmes_page_view(request):
 	return render(request, 'lmdb/filmes.html')
 
 def contacto_page_view(request):
