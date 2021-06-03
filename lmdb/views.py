@@ -1,5 +1,6 @@
 import json
 
+from django.contrib.auth import authenticate, login, logout
 from django.core import serializers
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
@@ -52,3 +53,28 @@ def comentarios_page_view(request):
 
 	context = {'form': form}
 	return render(request, 'lmdb/comentarios.html', context)
+
+def index_view(request):
+	if not request.user.is_authenticated:
+		return HttpResponseRedirect(reverse('login'))
+	return render(request, "lmdb/user.html")
+
+def login_view(request):
+	if request.method == 'POST':
+		username = request.POST['username']
+		password = request.POST['password']
+		user = authenticate(request, username = username, password=password)
+		if user is not None:
+			login(request, user)
+			return HttpResponseRedirect(reverse('index'))
+		else:
+			return render(request, "lmdb/login.html", {
+				'message': "Invalid credentials."
+			})
+	return render(request, "lmdb/login.html")
+
+def logout_view(request):
+	logout(request)
+	return render(request, 'lmdb/login.html', {
+		"message: Logged out."
+	})
