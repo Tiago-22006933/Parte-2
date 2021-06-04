@@ -10,11 +10,12 @@ from .forms import NovoContactoForm, NovoComentarioForm
 from .models import Contacto, Comentario, Streaming
 
 def home_page_view(request):
+	if not request.user.is_authenticated:
+		return HttpResponseRedirect(reverse('lmdb:login'))
 	return render(request, 'lmdb/home.html')
 
 def streaming_page_view(request):
 	context = {'streaming_plat': Streaming.objects.all()}
-	print(Streaming.objects.all())
 	return render(request, 'lmdb/streaming.html', context)
 
 def filmes_page_view(request):
@@ -53,11 +54,6 @@ def comentarios_page_view(request):
 	context = {'form': form}
 	return render(request, 'lmdb/comentarios.html', context)
 
-def index_view(request):
-	if not request.user.is_authenticated:
-		return HttpResponseRedirect(reverse('login'))
-	return render(request, "lmdb/user.html")
-
 def login_view(request):
 	if request.method == 'POST':
 		username = request.POST['username']
@@ -65,10 +61,10 @@ def login_view(request):
 		user = authenticate(request, username = username, password=password)
 		if user is not None:
 			login(request, user)
-			return HttpResponseRedirect(reverse('index'))
+			return HttpResponseRedirect(reverse('lmdb:home'))
 		else:
 			return render(request, "lmdb/login.html", {
-				'message': "Invalid credentials."
+				'message': "Credenciais incorrectas."
 			})
 	return render(request, "lmdb/login.html")
 

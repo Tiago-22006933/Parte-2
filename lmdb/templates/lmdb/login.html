@@ -1,15 +1,37 @@
-{% extends 'lmdb/base.html' %}
-
-{% block body %}
-    {% if message %}
-        <div>{ message }</div>
-    {% endif %}
-<form action="{% url 'login' %}" method="post">
-    {% csrf_token %}
-
-    <input type = "text" name="username" placeholder="username">
-    <input type="password" name="password" placeholder="password">
-    <input type="submit" value="login">
-</form>
-
-{% endblock %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}{% include 'lmdb/head.html' %}{% endblock head%}
+</head>
+<body>
+    <main class="ui main container">
+        <div class="ui centered card">
+            <div class="content">
+                <form class="ui form" method="POST" action="{% url 'lmdb:login' %}">
+                    {% csrf_token %}
+                        <div class="two fields">
+                            <div class="field">
+                                <label>Username</label>
+                                <input type = "text" name="username" placeholder="username">
+                            </div>
+                            <div class="field">
+                                <label>Password</label>
+                                <input type="password" name="password" placeholder="password">
+                            </div>
+                        </div>
+                    <button class="ui primary button" type="submit">Login</button>
+                </form>
+            </div>
+            {% if message %}
+                <div class="ui negative message">
+                  <i class="close icon"></i>
+                  <div class="header">
+                    {{ message }}
+                  </div>
+            </div>
+            {% endif %}
+    </main>
+    <script src="{% static 'js/login.js' %}"></script>
+</body>
+</html>

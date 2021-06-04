@@ -10,7 +10,6 @@ urlpatterns = [
     path('contacto/', views.contacto_page_view, name='contacto'),
     path('ajax/validate_username/', views.contacto_page_view),
     path('comentarios/', views.comentarios_page_view, name='comentarios'),
-    path('', views.index_view, name="index"),
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
 ]
