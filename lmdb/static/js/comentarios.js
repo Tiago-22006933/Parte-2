@@ -6,7 +6,36 @@ $( document ).ready(function() {
     $("#comentarios_page").removeClass("active");
 
     $("#comentarios_page").addClass("active");
+
     $(".rating").rating();
+
+    $('#rating_clareza_global')
+      .rating('disable')
+    ;
+    $('#rating_Precisão_global')
+      .rating('disable')
+    ;
+    $('#rating_Amplitude_global')
+      .rating('disable')
+    ;
+    $('#rating_Significância_global')
+      .rating('disable')
+    ;
+    $('#rating_Globalidade_global')
+      .rating('disable')
+    ;
+    $('#rating_Rigor_global')
+      .rating('disable')
+    ;
+    $('#rating_Profundidade_global')
+      .rating('disable')
+    ;
+    $('#rating_Lógica_global')
+      .rating('disable')
+    ;
+    $('#rating_Originalidade_global')
+      .rating('disable')
+    ;
 });
 
 

@@ -2,6 +2,7 @@ import json
 
 from django.contrib.auth import authenticate, login, logout
 from django.core import serializers
+from django.db.models import Avg
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse
@@ -10,8 +11,6 @@ from .forms import NovoContactoForm, NovoComentarioForm
 from .models import Contacto, Comentario, Streaming
 
 def home_page_view(request):
-	if not request.user.is_authenticated:
-		return HttpResponseRedirect(reverse('lmdb:login'))
 	return render(request, 'lmdb/home.html')
 
 def streaming_page_view(request):
@@ -22,6 +21,8 @@ def filmes_page_view(request):
 	return render(request, 'lmdb/filmes.html')
 
 def contacto_page_view(request):
+	if not request.user.is_authenticated:
+		return HttpResponseRedirect(reverse('lmdb:login'))
 	form = NovoContactoForm(request.POST or None)
 	if 'edita_contacto_id' in request.POST.keys():
 		editar_id = request.POST.get('edita_contacto_id')
@@ -46,12 +47,36 @@ def contacto_page_view(request):
 	return render(request, 'lmdb/contacto.html', context)
 
 def comentarios_page_view(request):
+	num_comentários = Comentario.objects.all().count()
+	avg_clareza = Comentario.objects.all().aggregate(Avg('clareza'))
+	avg_rigor = Comentario.objects.all().aggregate(Avg('rigor'))
+	avg_precisão = Comentario.objects.all().aggregate(Avg('precisão'))
+	avg_profundidade = Comentario.objects.all().aggregate(Avg('profundidade'))
+	avg_amplitude = Comentario.objects.all().aggregate(Avg('amplitude'))
+	avg_lógica = Comentario.objects.all().aggregate(Avg('lógica'))
+	avg_significância = Comentario.objects.all().aggregate(Avg('significância'))
+	avg_originalidade = Comentario.objects.all().aggregate(Avg('originalidade'))
+	avg_globalidade = Comentario.objects.all().aggregate(Avg('globalidade'))
+
 	form = NovoComentarioForm(request.POST or None)
 	if form.is_valid():
 		form.save()
 		return HttpResponseRedirect(reverse('lmdb:comentarios'))
 
-	context = {'form': form}
+	context = {
+		'form': form,
+		'clareza': avg_clareza,
+		'rigor': avg_rigor,
+		'precisão': avg_precisão,
+		'profundidade': avg_profundidade,
+		'amplitude': avg_amplitude,
+		'lógica': avg_lógica,
+		'significância': avg_significância,
+		'originalidade': avg_originalidade,
+		'globalidade': avg_globalidade,
+		'num_comentários': num_comentários,
+	}
+	print(context)
 	return render(request, 'lmdb/comentarios.html', context)
 
 def login_view(request):
@@ -70,6 +95,4 @@ def login_view(request):
 
 def logout_view(request):
 	logout(request)
-	return render(request, 'lmdb/login.html', {
-		"message: Logged out."
-	})
+	return render(request, 'lmdb/home.html')
