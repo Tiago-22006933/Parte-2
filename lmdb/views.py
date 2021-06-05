@@ -7,8 +7,8 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse
 
-from .forms import NovoContactoForm, NovoComentarioForm, NovoRealizadorForm, NovoActorForm
-from .models import Contacto, Comentario, Streaming, Genero, Realizador, Actor
+from .forms import NovoContactoForm, NovoComentarioForm, NovoRealizadorForm, NovoActorForm, NovoFilmeForm
+from .models import Contacto, Comentario, Streaming, Genero, Realizador, Actor, Filme
 
 def home_page_view(request):
 	return render(request, 'lmdb/home.html')
@@ -18,13 +18,16 @@ def streaming_page_view(request):
 	return render(request, 'lmdb/streaming.html', context)
 
 def filmes_page_view(request):
-	return render(request, 'lmdb/filmes.html')
+	filmes = Filme.objects.all()
+	context = {'filmes': filmes}
+	return render(request, 'lmdb/filmes.html', context)
 
 def novo_filme_page_view(request):
 	if not request.user.is_authenticated:
 		return HttpResponseRedirect(reverse('lmdb:login'))
 	form_realizador = NovoRealizadorForm(request.POST or None, prefix='realizador_form')
 	form_actor = NovoActorForm(request.POST or None, prefix='actor_form')
+	form_filme = NovoFilmeForm(request.POST or None, prefix='filme_form')
 	generos = Genero.objects.all()
 	realizadores = Realizador.objects.all()
 	actores = Actor.objects.all()
@@ -33,16 +36,22 @@ def novo_filme_page_view(request):
 		form_realizador.save()
 		return HttpResponseRedirect(reverse('lmdb:novofilme'))
 
-	if form_actor.is_valid()  and form_actor.prefix == 'actor_form':
+	if form_actor.is_valid() and form_actor.prefix == 'actor_form':
 		form_actor.save()
 		return HttpResponseRedirect(reverse('lmdb:novofilme'))
 
+	if form_filme.is_valid() and form_filme.prefix == 'filme_form':
+		form_filme.save()
+		return HttpResponseRedirect(reverse('lmdb:novofilme'))
+
+	print(form_filme)
 	context = {
 		'generos': generos,
 		'realizadores': realizadores,
 		'actores': actores,
 		'form_realizador': form_realizador,
 		'form_actor': form_actor,
+		'form_filme': form_filme,
 	}
 	return render(request, 'lmdb/novofilme.html', context)
 

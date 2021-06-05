@@ -6,32 +6,37 @@
         Novo filme
     </h2>
 
-    <form class="ui form">
+    <form class="ui form" method="POST" id="novo_filme_form">
+        {% csrf_token %}
         <h4 class="ui dividing header">Informação geral</h4>
         <div class="field">
             <div class="three fields">
                 <div class="field">
                     <label>Nome</label>
-                    <input type="text" name="nome">
+                    <input type="text" name="nome" id="nome_filme">
+                    {{ form_filme.nome }}
                 </div>
                 <div class="field">
                     <label>Género</label>
-                    <select class="ui fluid dropdown">
+                    <select class="ui fluid dropdown" id="genero_filme">
                         <option value="">Género</option>
                         {% for genero in generos %}
                             <option value="{{ genero.id }}">{{ genero.nome }}</option>
                         {% endfor %}
                     </select>
+                    {{ form_filme.genero }}
                 </div>
                 <div class="field">
                     <label>Data de lançamento</label>
-                    <input type="date" name="data_lançamento">
+                    <input type="date" name="data_lançamento" id="data_lancamento_filme">
+                    {{ form_filme.data_lancamento }}
                 </div>
             </div>
             <div class="three fields">
                 <div class="field">
                     <label>Capa</label>
-                    <input type="file" name="capa">
+                    <input type="file" name="capa" id="capa_filme">
+                    {{ form_filme.capa }}
                 </div>
             </div>
         </div>
@@ -41,30 +46,42 @@
                 <div class="field">
                     <label>Realizador</label>
                     <div class="ui right labeled input">
-                        <select class="ui fluid dropdown">
+                        <select class="ui fluid dropdown" id="realizador_filme">
                             <option value="">Realizador</option>
                             {% for realizador in realizadores %}
                                 <option value="{{ realizador.id }}">{{ realizador.nome }}</option>
                             {% endfor %}
                         </select>
-                        <button class="ui small basic icon button" type='button' id="novo_realizador_button"><i class="plus icon"></i></button>
+                        <div class="ui animated small basic icon button" tabindex="0" id="novo_realizador_button">
+                            <div class="visible content">Novo</div>
+                            <div class="hidden content">
+                                <i class="plus icon"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                {{ form_filme.realizador }}
                 <div class="field">
                     <label>Actores</label>
                     <div class="ui right labeled input">
-                        <select name="skills" multiple="" class="ui fluid dropdown">
+                        <select name="skills" multiple="" class="ui fluid dropdown" id="actores_filme">
                             <option value="">Actores</option>
                             {% for actor in actores %}
                                 <option value="{{ actor.id }}">{{ actor.nome }}</option>
                             {% endfor %}
                         </select>
-                        <button class="ui small basic icon button" type='button' id="novo_actor_button"><i class="plus icon"></i></button>
+                        <div class="ui animated small basic icon button" tabindex="0" id="novo_actor_button">
+                            <div class="visible content">Novo</div>
+                            <div class="hidden content">
+                                <i class="plus icon"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                {{ form_filme.actores }}
             </div>
         </div>
-       <div class="ui primary button" tabindex="0">Inserir filme</div>
+       <div class="ui primary button" type="button" id="novo_filme_button">Inserir filme</div>
     </form>
 
     {% block modal_novo_realizador %}{% include 'lmdb/modals/modal_novo_realizador.html' %}{% endblock modal_novo_realizador%}

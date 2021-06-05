@@ -1,5 +1,6 @@
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 class Contacto(models.Model):
@@ -20,7 +21,7 @@ class Comentario(models.Model):
     significância = models.IntegerField(validators=[MinValueValidator(0),MaxValueValidator(10)])
     originalidade = models.IntegerField(validators=[MinValueValidator(0),MaxValueValidator(10)])
     globalidade = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)])
-    comentário = models.CharField(max_length=500, default="Sem comentário")
+    comentário = models.CharField(max_length=500, blank=True)
 
     def __str__(self):
         return 'Comentário'
@@ -33,9 +34,6 @@ class Streaming(models.Model):
 
     def __str__(self):
         return self.nome
-
-class Filme(models.Model):
-    pass
 
 class Actor(models.Model):
     nome = models.CharField(max_length=30, default='')
@@ -51,6 +49,17 @@ class Realizador(models.Model):
 
 class Genero(models.Model):
     nome = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.nome
+
+class Filme(models.Model):
+    nome = models.CharField(max_length=30)
+    data_lancamento = models.DateField(default=timezone.now)
+    genero = models.ForeignKey(Genero, on_delete=models.CASCADE, related_name='filmes')
+    realizador = models.ForeignKey(Realizador, on_delete=models.CASCADE, related_name='filmes')
+    actores = models.ManyToManyField(Actor)
+    capa = models.ImageField(upload_to='images/')
 
     def __str__(self):
         return self.nome

@@ -33,3 +33,14 @@ $('#novo_actor_fecha_modal').on('click', function() {
       .modal('hide')
     ;
 });
+
+$('#novo_filme_button').on('click', function() {
+    var form = document.getElementById("novo_filme_form");
+    $("#id_filme_form-nome").val($("#nome_filme").val());
+    $("#id_filme_form-genero").val($("#genero_filme").val());
+    $("#id_filme_form-data_lancamento_filme").val($("#data_lancamento_filme").val());
+    $("#id_filme_form-capa").val($("#capa_filme").val());
+    $("#id_filme_form-realizador").val($("#realizador_filme").val());
+    $("#id_filme_form-actores").val($("#actores_filme").val());
+    form.submit();
+});

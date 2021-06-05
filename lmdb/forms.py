@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm, EmailField
 
-from .models import Contacto, Comentario, Realizador, Actor
+from .models import Contacto, Comentario, Realizador, Actor, Filme
 
 class NovoContactoForm(ModelForm):
     class Meta:
@@ -32,3 +32,15 @@ class NovoActorForm(ModelForm):
     class Meta:
         model = Actor
         fields = '__all__'
+
+class NovoFilmeForm(ModelForm):
+    class Meta:
+        model = Filme
+        fields = '__all__'
+        widgets = {'nome': forms.HiddenInput(),
+                   'data_lancamento': forms.HiddenInput(),
+                   'genero': forms.HiddenInput(),
+                   'realizador': forms.HiddenInput(),
+                   'actores': forms.HiddenInput(),
+                   'capa': forms.HiddenInput(),
+                   }

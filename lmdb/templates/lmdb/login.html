@@ -10,16 +10,17 @@
             <div class="content">
                 <form class="ui form" method="POST" action="{% url 'lmdb:login' %}">
                     {% csrf_token %}
-                        <div class="two fields">
-                            <div class="field">
-                                <label>Username</label>
-                                <input type = "text" name="username" placeholder="username">
-                            </div>
-                            <div class="field">
-                                <label>Password</label>
-                                <input type="password" name="password" placeholder="password">
-                            </div>
+                    <h4 class="ui dividing header">Lusófona movie database login</h4>
+                    <div class="two field">
+                        <div class="field">
+                            <label>Username</label>
+                            <input type="text" name="username" placeholder="username">
                         </div>
+                        <div class="field">
+                            <label>Password</label>
+                            <input type="password" name="password" placeholder="password">
+                        </div>
+                    </div>
                     <button class="ui primary button" type="submit">Login</button>
                 </form>
             </div>
