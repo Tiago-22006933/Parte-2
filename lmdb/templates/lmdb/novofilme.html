@@ -1,0 +1,66 @@
+{% extends 'lmdb/base.html' %}
+{% load static %}
+{% block main %}
+    <h2 class="ui center aligned icon header">
+        <i class="circular film icon"></i>
+        Novo filme
+    </h2>
+
+    <form class="ui form">
+        <h4 class="ui dividing header">Informação geral</h4>
+        <div class="field">
+            <div class="three fields">
+                <div class="field">
+                    <label>Nome</label>
+                    <input type="text" name="nome">
+                </div>
+                <div class="field">
+                    <label>Género</label>
+                    <select class="ui fluid dropdown">
+                        <option value="">Género</option>
+                        {% for genero in generos %}
+                            <option value="{{ genero.id }}">{{ genero.nome }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Data de lançamento</label>
+                    <input type="date" name="data_lançamento">
+                </div>
+            </div>
+            <div class="three fields">
+                <div class="field">
+                    <label>Capa</label>
+                    <input type="file" name="capa">
+                </div>
+            </div>
+        </div>
+        <h4 class="ui dividing header">Elenco</h4>
+        <div class="field">
+            <div class="three fields">
+                <div class="field">
+                    <label>Realizador</label>
+                    <div class="ui right labeled input">
+                        <select class="ui fluid dropdown">
+                            <option value="">Realizador</option>
+                                {% for realizador in realizadores %}
+                                    <option value="{{ realizador.id }}">{{ realizador.nome }}</option>
+                                {% endfor %}
+                            </select>
+                            <div class="ui vertical blue animated button" tabindex="0" id="novo_realizador_button">
+                                <div class="hidden content">Novo</div>
+                                <div class="visible content">
+                                    <i class="plus icon"></i>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       <div class="ui primary button" tabindex="0">Inserir filme</div>
+    </form>
+
+    {% block modal_novo_realizador %}{% include 'lmdb/modals/modal_novo_realizador.html' %}{% endblock modal_novo_realizador%}
+
+    <script src="{% static 'js/novofilme.js' %}"></script>
+{% endblock %}

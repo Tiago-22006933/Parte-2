@@ -7,8 +7,8 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse
 
-from .forms import NovoContactoForm, NovoComentarioForm
-from .models import Contacto, Comentario, Streaming
+from .forms import NovoContactoForm, NovoComentarioForm, NovoRealizadorForm
+from .models import Contacto, Comentario, Streaming, Genero, Realizador
 
 def home_page_view(request):
 	return render(request, 'lmdb/home.html')
@@ -19,6 +19,20 @@ def streaming_page_view(request):
 
 def filmes_page_view(request):
 	return render(request, 'lmdb/filmes.html')
+
+def novo_filme_page_view(request):
+	if not request.user.is_authenticated:
+		return HttpResponseRedirect(reverse('lmdb:login'))
+	form_realizador = NovoRealizadorForm(request.POST or None)
+	generos = Genero.objects.all()
+	realizadores = Realizador.objects.all()
+
+	if form_realizador.is_valid():
+		form_realizador.save()
+		return HttpResponseRedirect(reverse('lmdb:novofilme'))
+
+	context = {'generos': generos, 'realizadores': realizadores, 'form_realizador': form_realizador}
+	return render(request, 'lmdb/novofilme.html', context)
 
 def contacto_page_view(request):
 	if not request.user.is_authenticated:

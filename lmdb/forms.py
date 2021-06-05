@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm, EmailField
 
-from .models import Contacto, Comentario
+from .models import Contacto, Comentario, Realizador
 
 class NovoContactoForm(ModelForm):
     class Meta:
@@ -22,3 +22,8 @@ class NovoComentarioForm(ModelForm):
                    'originalidade': forms.HiddenInput(),
                    'globalidade': forms.HiddenInput(),
                    'comentário': forms.HiddenInput()}
+
+class NovoRealizadorForm(ModelForm):
+    class Meta:
+        model = Realizador
+        fields = '__all__'

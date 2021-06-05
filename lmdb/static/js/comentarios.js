@@ -9,6 +9,10 @@ $( document ).ready(function() {
 
     $(".rating").rating();
 
+    $('.ui.dropdown')
+      .dropdown()
+    ;
+
     $('#rating_clareza_global')
       .rating('disable')
     ;

@@ -3,9 +3,22 @@
         <a class="item" href="{% url 'lmdb:home' %}" id="home_page">
             Home
         </a>
-        <a class="item" href="{% url 'lmdb:filmes' %}" id="filmes_page">
-            Filmes
-        </a>
+        {% if request.user.is_authenticated %}
+            <a class="ui dropdown item">Filme<i class="dropdown icon"></i>
+                <div class="menu">
+                    <div class="item" onclick="location.href={% url 'lmdb:filmes' %}">
+                          Consulta
+                    </div>
+                    <div class="item" onclick="location.href={% url 'lmdb:novofilme' %}">
+                          Novo filme
+                    </div>
+                </div>
+            </a>
+        {% else %}
+            <a class="item" href="{% url 'lmdb:filmes' %}" id="filmes_page">
+                Filmes
+            </a>
+        {% endif %}
         <a class="item" href="{% url 'lmdb:streaming' %}" id="streaming_page">
             Streaming
         </a>

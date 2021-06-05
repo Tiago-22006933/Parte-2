@@ -41,4 +41,7 @@ class Actor(models.Model):
     pass
 
 class Realizador(models.Model):
-    pass
+    nome = models.CharField(max_length=30, default='')
+
+class Genero(models.Model):
+    nome = models.CharField(max_length=30)

@@ -5,54 +5,55 @@
         <i class="comment outline icon"></i>
         A sua opinião
     </h2>
-
-    <div class="ui centered raised fluid card" style="min-width: 200px;">
-        <div class="content">
-            <div class="right floated meta">{{ num_comentários }} opiniões</div>
-        </div>
-        <div class="content">
-            <div class="ui grid">
-                <div class="eight wide column">
-                    <div class="ui left aligned grid">
-                        <div class="three wide column">
-                            <label>Clareza</label>
-                            <label>Precisão</label>
-                            <label>Amplitude</label>
-                            <label>Significância</label>
-                            <label>Globalidade</label>
-                        </div>
-                        <div class="eight wide column">
-                            <div class="ui star rating" data-rating="{{ clareza.clareza__avg|floatformat:"0" }}" data-max-rating="10" id="rating_clareza_global"></div>
-                            <div class="ui star rating" data-rating="{{ precisão.precisão__avg|floatformat:"0" }}" data-max-rating="10" id="rating_Precisão_global"></div>
-                            <div class="ui star rating" data-rating="{{ amplitude.amplitude__avg|floatformat:"0" }}" data-max-rating="10" id="rating_Amplitude_global"></div>
-                            <div class="ui star rating" data-rating="{{ significância.significância__avg|floatformat:"0" }}" data-max-rating="10" id="rating_Significância_global"></div>
-                            <div class="ui heart rating" data-rating="{{ globalidade.globalidade__avg|floatformat:"0" }}" data-max-rating="10" id="rating_Globalidade_global"></div>
+    <div class="ui container">
+        <div class="ui centered raised fluid card" style="min-width: 200px;">
+            <div class="content">
+                <div class="right floated meta">{{ num_comentários }} opiniões</div>
+            </div>
+            <div class="content">
+                <div class="ui grid">
+                    <div class="eight wide column">
+                        <div class="ui left aligned grid">
+                            <div class="three wide column">
+                                <label>Clareza</label>
+                                <label>Precisão</label>
+                                <label>Amplitude</label>
+                                <label>Significância</label>
+                                <label>Globalidade</label>
+                            </div>
+                            <div class="eight wide column">
+                                <div class="ui star rating" data-rating="{{ clareza.clareza__avg|floatformat:"0" }}" data-max-rating="10" id="rating_clareza_global"></div>
+                                <div class="ui star rating" data-rating="{{ precisão.precisão__avg|floatformat:"0" }}" data-max-rating="10" id="rating_Precisão_global"></div>
+                                <div class="ui star rating" data-rating="{{ amplitude.amplitude__avg|floatformat:"0" }}" data-max-rating="10" id="rating_Amplitude_global"></div>
+                                <div class="ui star rating" data-rating="{{ significância.significância__avg|floatformat:"0" }}" data-max-rating="10" id="rating_Significância_global"></div>
+                                <div class="ui heart rating" data-rating="{{ globalidade.globalidade__avg|floatformat:"0" }}" data-max-rating="10" id="rating_Globalidade_global"></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="eight wide column">
-                    <div class="ui left aligned grid">
-                        <div class="three wide column">
-                            <label>Rigor</label>
-                            <label>Profundidade</label>
-                            <label>Lógica</label>
-                            <label>Originalidade</label>
-                        </div>
-                        <div class="eight wide column">
-                            <div class="ui star rating" data-rating="{{ rigor.rigor__avg|floatformat:"0" }}" data-max-rating="10" id="rating_Rigor_global"></div>
-                            <div class="ui star rating" data-rating="{{ profundidade.profundidade__avg|floatformat:"0" }}" data-max-rating="10" id="rating_Profundidade_global"></div>
-                            <div class="ui star rating" data-rating="{{ lógica.lógica__avg|floatformat:"0" }}" data-max-rating="10" id="rating_Lógica_global"></div>
-                            <div class="ui star rating" data-rating="{{ originalidade.originalidade__avg|floatformat:"0" }}" data-max-rating="10" id="rating_Originalidade_global"></div>
+                    <div class="eight wide column">
+                        <div class="ui left aligned grid">
+                            <div class="three wide column">
+                                <label>Rigor</label>
+                                <label>Profundidade</label>
+                                <label>Lógica</label>
+                                <label>Originalidade</label>
+                            </div>
+                            <div class="eight wide column">
+                                <div class="ui star rating" data-rating="{{ rigor.rigor__avg|floatformat:"0" }}" data-max-rating="10" id="rating_Rigor_global"></div>
+                                <div class="ui star rating" data-rating="{{ profundidade.profundidade__avg|floatformat:"0" }}" data-max-rating="10" id="rating_Profundidade_global"></div>
+                                <div class="ui star rating" data-rating="{{ lógica.lógica__avg|floatformat:"0" }}" data-max-rating="10" id="rating_Lógica_global"></div>
+                                <div class="ui star rating" data-rating="{{ originalidade.originalidade__avg|floatformat:"0" }}" data-max-rating="10" id="rating_Originalidade_global"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="extra content">
-            <a id="novo_comentario_button">
-                <i class="heart icon"></i>
-                Adicionar comentário
-            </a>
+            <div class="extra content">
+                <a id="novo_comentario_button">
+                    <i class="heart icon"></i>
+                    Adicionar comentário
+                </a>
+            </div>
         </div>
     </div>
 
