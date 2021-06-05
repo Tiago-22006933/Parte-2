@@ -21,3 +21,15 @@ $('#novo_realizador_fecha_modal').on('click', function() {
       .modal('hide')
     ;
 });
+
+$('#novo_actor_button').on('click', function() {
+    $('#modal_novo_actor')
+      .modal('show')
+    ;
+});
+
+$('#novo_actor_fecha_modal').on('click', function() {
+    $('#modal_novo_actor')
+      .modal('hide')
+    ;
+});

@@ -38,10 +38,19 @@ class Filme(models.Model):
     pass
 
 class Actor(models.Model):
-    pass
+    nome = models.CharField(max_length=30, default='')
+
+    def __str__(self):
+        return self.nome
 
 class Realizador(models.Model):
     nome = models.CharField(max_length=30, default='')
 
+    def __str__(self):
+        return self.nome
+
 class Genero(models.Model):
     nome = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.nome

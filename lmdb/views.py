@@ -7,8 +7,8 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse
 
-from .forms import NovoContactoForm, NovoComentarioForm, NovoRealizadorForm
-from .models import Contacto, Comentario, Streaming, Genero, Realizador
+from .forms import NovoContactoForm, NovoComentarioForm, NovoRealizadorForm, NovoActorForm
+from .models import Contacto, Comentario, Streaming, Genero, Realizador, Actor
 
 def home_page_view(request):
 	return render(request, 'lmdb/home.html')
@@ -23,15 +23,27 @@ def filmes_page_view(request):
 def novo_filme_page_view(request):
 	if not request.user.is_authenticated:
 		return HttpResponseRedirect(reverse('lmdb:login'))
-	form_realizador = NovoRealizadorForm(request.POST or None)
+	form_realizador = NovoRealizadorForm(request.POST or None, prefix='realizador_form')
+	form_actor = NovoActorForm(request.POST or None, prefix='actor_form')
 	generos = Genero.objects.all()
 	realizadores = Realizador.objects.all()
+	actores = Actor.objects.all()
 
-	if form_realizador.is_valid():
+	if form_realizador.is_valid() and form_realizador.prefix == 'realizador_form':
 		form_realizador.save()
 		return HttpResponseRedirect(reverse('lmdb:novofilme'))
 
-	context = {'generos': generos, 'realizadores': realizadores, 'form_realizador': form_realizador}
+	if form_actor.is_valid()  and form_actor.prefix == 'actor_form':
+		form_actor.save()
+		return HttpResponseRedirect(reverse('lmdb:novofilme'))
+
+	context = {
+		'generos': generos,
+		'realizadores': realizadores,
+		'actores': actores,
+		'form_realizador': form_realizador,
+		'form_actor': form_actor,
+	}
 	return render(request, 'lmdb/novofilme.html', context)
 
 def contacto_page_view(request):

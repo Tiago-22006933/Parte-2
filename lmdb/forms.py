@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm, EmailField
 
-from .models import Contacto, Comentario, Realizador
+from .models import Contacto, Comentario, Realizador, Actor
 
 class NovoContactoForm(ModelForm):
     class Meta:
@@ -26,4 +26,9 @@ class NovoComentarioForm(ModelForm):
 class NovoRealizadorForm(ModelForm):
     class Meta:
         model = Realizador
+        fields = '__all__'
+
+class NovoActorForm(ModelForm):
+    class Meta:
+        model = Actor
         fields = '__all__'

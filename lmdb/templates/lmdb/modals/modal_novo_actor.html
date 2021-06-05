@@ -1,0 +1,17 @@
+<div class="ui tiny modal" id="modal_novo_actor">
+    <i class="close icon"></i>
+    <div class="header">Novo actor</div>
+    <div class="content">
+        <form class="ui form" method="POST">
+            {% csrf_token %}
+            <div class="two fields">
+                <div class="field">
+                    <label>Nome</label>
+                    {{ form_actor.nome }}
+                </div>
+            </div>
+            <button class="ui primary button" type="submit">Criar actor</button>
+            <button class="ui button" type="reset" id="novo_actor_fecha_modal">Cancelar</button>
+        </form>
+    </div>
+</div>

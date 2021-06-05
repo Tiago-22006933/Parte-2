@@ -43,16 +43,23 @@
                     <div class="ui right labeled input">
                         <select class="ui fluid dropdown">
                             <option value="">Realizador</option>
-                                {% for realizador in realizadores %}
-                                    <option value="{{ realizador.id }}">{{ realizador.nome }}</option>
-                                {% endfor %}
-                            </select>
-                            <div class="ui vertical blue animated button" tabindex="0" id="novo_realizador_button">
-                                <div class="hidden content">Novo</div>
-                                <div class="visible content">
-                                    <i class="plus icon"></i>
-                                </div>
-                            </div>
+                            {% for realizador in realizadores %}
+                                <option value="{{ realizador.id }}">{{ realizador.nome }}</option>
+                            {% endfor %}
+                        </select>
+                        <button class="ui small basic icon button" type='button' id="novo_realizador_button"><i class="plus icon"></i></button>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Actores</label>
+                    <div class="ui right labeled input">
+                        <select name="skills" multiple="" class="ui fluid dropdown">
+                            <option value="">Actores</option>
+                            {% for actor in actores %}
+                                <option value="{{ actor.id }}">{{ actor.nome }}</option>
+                            {% endfor %}
+                        </select>
+                        <button class="ui small basic icon button" type='button' id="novo_actor_button"><i class="plus icon"></i></button>
                     </div>
                 </div>
             </div>
@@ -61,6 +68,7 @@
     </form>
 
     {% block modal_novo_realizador %}{% include 'lmdb/modals/modal_novo_realizador.html' %}{% endblock modal_novo_realizador%}
+    {% block modal_novo_actor %}{% include 'lmdb/modals/modal_novo_actor.html' %}{% endblock modal_novo_actor%}
 
     <script src="{% static 'js/novofilme.js' %}"></script>
 {% endblock %}
