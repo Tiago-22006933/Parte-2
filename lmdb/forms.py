@@ -40,7 +40,6 @@ class NovoFilmeForm(ModelForm):
         widgets = {'nome': forms.HiddenInput(),
                    'data_lancamento': forms.HiddenInput(),
                    'genero': forms.HiddenInput(),
-                   'realizador': forms.HiddenInput(),
-                   'actores': forms.HiddenInput(),
-                   'capa': forms.HiddenInput(),
+                   #'realizador': forms.HiddenInput(),
+                   #'actores': forms.HiddenInput(),
                    }

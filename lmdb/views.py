@@ -27,7 +27,8 @@ def novo_filme_page_view(request):
 		return HttpResponseRedirect(reverse('lmdb:login'))
 	form_realizador = NovoRealizadorForm(request.POST or None, prefix='realizador_form')
 	form_actor = NovoActorForm(request.POST or None, prefix='actor_form')
-	form_filme = NovoFilmeForm(request.POST or None, prefix='filme_form')
+	form_filme = NovoFilmeForm(request.POST or None, request.FILES, prefix='filme_form')
+
 	generos = Genero.objects.all()
 	realizadores = Realizador.objects.all()
 	actores = Actor.objects.all()
@@ -44,7 +45,7 @@ def novo_filme_page_view(request):
 		form_filme.save()
 		return HttpResponseRedirect(reverse('lmdb:novofilme'))
 
-	print(form_filme)
+	print(form_filme.errors)
 	context = {
 		'generos': generos,
 		'realizadores': realizadores,
