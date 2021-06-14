@@ -14,9 +14,19 @@
                     {{ form.last_name }}
                 </div>
             </div>
-            <div class="field">
-                <label>Email</label>
-                {{ form.email }}
+            <div class="three fields">
+                <div class="field">
+                    <label>Email</label>
+                    {{ form.email }}
+                </div>
+                <div class="field">
+                    <label>Data nascimento</label>
+                    {{ form.data_nascimento }}
+                </div>
+                <div class="field">
+                    <label>Telefone</label>
+                    {{ form.telefone }}
+                </div>
             </div>
             <button class="ui primary button" type="submit">Criar contacto</button>
             <button class="ui button" type="reset" id="novo_contacto_fecha_modal">Cancelar</button>

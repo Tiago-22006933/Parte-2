@@ -44,6 +44,7 @@
             <div class="three fields">
                 <div class="field">
                     <label>Realizador</label>
+                    <!--
                     <div class="field">
                         {{ form_filme.realizador }}
                          <div class="ui animated small basic icon button" tabindex="0" id="novo_realizador_button">
@@ -53,7 +54,7 @@
                             </div>
                         </div>
                     </div>
-                    <!--
+                    -->
                     <div class="ui right labeled input">
                         <select class="ui fluid dropdown" id="realizador_filme">
                             <option value="">Realizador</option>
@@ -68,20 +69,10 @@
                             </div>
                         </div>
                     </div>
-                    -->
+                    {{ form_filme.realizador }}
                 </div>
                 <div class="field">
                     <label>Actores</label>
-                    <div class="field">
-                        {{ form_filme.actores }}
-                        <div class="ui animated small basic icon button" tabindex="0" id="novo_realizador_button">
-                            <div class="visible content">Novo</div>
-                            <div class="hidden content">
-                                <i class="plus icon"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <!--
                     <div class="ui right labeled input">
                         <select multiple="" class="ui fluid dropdown" name="actores[]" id="actores_filme">
                             <option value="">Actores</option>
@@ -96,7 +87,7 @@
                             </div>
                         </div>
                     </div>
-                    -->
+                    {{ form_filme.actores }}
                 </div>
             </div>
         </div>

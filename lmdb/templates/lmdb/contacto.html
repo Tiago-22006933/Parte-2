@@ -11,6 +11,8 @@
         <thead>
             <tr>
                 <th>Nome</th>
+                <th>Data nascimento</th>
+                <th>Telefone</th>
                 <th>Email</th>
                 <th class="right aligned">Opções</th>
             </tr>
@@ -19,6 +21,8 @@
             {% for contacto in contactos %}
                 <tr>
                     <td>{{ contacto.first_name }}  {{ contacto.last_name }}</td>
+                    <td>{{ contacto.data_nascimento }}</td>
+                    <td>{{ contacto.telefone }}</td>
                     <td>{{ contacto.email }}</td>
                     <td class="right aligned">
                         <span><i class="edit outline icon editicon" id="{{ contacto.id }}"></i></span>

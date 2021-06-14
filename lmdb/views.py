@@ -40,7 +40,7 @@ def novo_filme_page_view(request):
 	if form_actor.is_valid() and form_actor.prefix == 'actor_form':
 		form_actor.save()
 		return HttpResponseRedirect(reverse('lmdb:novofilme'))
-
+	print(form_filme)
 	if form_filme.is_valid() and form_filme.prefix == 'filme_form':
 		form_filme.save()
 		return HttpResponseRedirect(reverse('lmdb:novofilme'))
@@ -70,6 +70,8 @@ def contacto_page_view(request):
 		Contacto.objects.filter(pk=editar_id).update(first_name = request.POST.get('first_name'))
 		Contacto.objects.filter(pk=editar_id).update(last_name = request.POST.get('last_name'))
 		Contacto.objects.filter(pk=editar_id).update(email = request.POST.get('email'))
+		Contacto.objects.filter(pk=editar_id).update(telefone=request.POST.get('telefone'))
+		Contacto.objects.filter(pk=editar_id).update(data_nascimento=request.POST.get('data_nascimento'))
 		return HttpResponseRedirect(reverse('lmdb:contacto'))
 	if 'contacto_id' in request.POST.keys():
 		contacto_eliminar = request.POST.get('contacto_id')

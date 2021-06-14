@@ -55,6 +55,10 @@ $('.editicon').on('click', function() {
                         $('#flast_name_edit').val(field);
                     } else if(fieldname == 'email') {
                         $('#email_edit').val(field);
+                    } else if(fieldname == 'telefone') {
+                        $('#telefone_edit').val(field);
+                    } else if(fieldname == 'data_nascimento') {
+                        $('#data_nascimento_edit').val(field);
                     }
                 });
             });
