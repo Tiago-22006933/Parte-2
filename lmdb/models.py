@@ -4,10 +4,10 @@ from django.utils import timezone
 
 # Create your models here.
 class Contacto(models.Model):
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
-    email = models.EmailField(max_length=60)
-    telefone = models.IntegerField(validators=[MinValueValidator(910000000),MaxValueValidator(969999999)])
+    first_name = models.CharField(max_length=30, default='')
+    last_name = models.CharField(max_length=30, default='')
+    email = models.EmailField(max_length=60, default='')
+    telefone = models.IntegerField(validators=[MinValueValidator(910000000),MaxValueValidator(969999999)], default='910000000')
     data_nascimento = models.DateField(default=timezone.now)
 
     def __str__(self):
@@ -58,7 +58,7 @@ class Genero(models.Model):
 class Filme(models.Model):
     nome = models.CharField(max_length=30)
     data_lancamento = models.DateField(default=timezone.now)
-    codigo = models.CharField(max_length=30)
+    codigo = models.CharField(max_length=30, default='tt0000000')
     genero = models.ForeignKey(Genero, on_delete=models.CASCADE, related_name='filmes')
     realizador = models.ForeignKey(Realizador, on_delete=models.CASCADE, related_name='filmes')
     actores = models.ManyToManyField(Actor)
