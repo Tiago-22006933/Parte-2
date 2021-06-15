@@ -47,5 +47,5 @@ class NovoFilmeForm(ModelForm):
                    'codigo': forms.HiddenInput(),
                    'genero': forms.HiddenInput(),
                    'realizador': forms.HiddenInput(),
-                   'actores': forms.HiddenInput(),
+                   #'actores': forms.HiddenInput(),
                    }

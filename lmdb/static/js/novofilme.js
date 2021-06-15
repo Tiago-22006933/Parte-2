@@ -41,6 +41,6 @@ $('#novo_filme_button').on('click', function() {
     $("#id_filme_form-data_lancamento").val($("#data_lancamento_filme").val());
     $("#id_filme_form-codigo").val($("#codigo_filme").val());
     $("#id_filme_form-realizador").val($("#realizador_filme").val());
-    $("#id_filme_form-actores").val($("#actores_filme").val());
+    //$("#id_filme_form-actores").val($("#actores_filme").val());
     form.submit();
 });

@@ -40,7 +40,7 @@ def novo_filme_page_view(request):
 	if form_actor.is_valid() and form_actor.prefix == 'actor_form':
 		form_actor.save()
 		return HttpResponseRedirect(reverse('lmdb:novofilme'))
-	print(form_filme)
+
 	if form_filme.is_valid() and form_filme.prefix == 'filme_form':
 		form_filme.save()
 		return HttpResponseRedirect(reverse('lmdb:novofilme'))
