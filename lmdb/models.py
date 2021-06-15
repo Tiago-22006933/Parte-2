@@ -58,6 +58,7 @@ class Genero(models.Model):
 class Filme(models.Model):
     nome = models.CharField(max_length=30)
     data_lancamento = models.DateField(default=timezone.now)
+    codigo = models.CharField(max_length=30)
     genero = models.ForeignKey(Genero, on_delete=models.CASCADE, related_name='filmes')
     realizador = models.ForeignKey(Realizador, on_delete=models.CASCADE, related_name='filmes')
     actores = models.ManyToManyField(Actor)
