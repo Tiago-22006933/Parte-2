@@ -9,6 +9,7 @@ $( document ).ready(function() {
     $('.ui.dropdown')
       .dropdown()
     ;
+
 });
 
 $('#novo_contacto_button').on('click', function() {
