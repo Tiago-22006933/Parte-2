@@ -11,7 +11,9 @@ from .forms import NovoContactoForm, NovoComentarioForm, NovoRealizadorForm, Nov
 from .models import Contacto, Comentario, Streaming, Genero, Realizador, Actor, Filme
 
 def home_page_view(request):
-	return render(request, 'lmdb/home.html')
+	filmes = Filme.objects.all()
+	context = {'filmes': filmes}
+	return render(request, 'lmdb/home.html', context)
 
 def streaming_page_view(request):
 	context = {'streaming_plat': Streaming.objects.all()}

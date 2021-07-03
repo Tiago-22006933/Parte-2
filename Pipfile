@@ -15,6 +15,7 @@ heroku = "*"
 django-environ = "*"
 pillow = "*"
 dj-database-url = "*"
+django-heroku = "*"
 
 [dev-packages]
 

@@ -8,14 +8,15 @@
     </h2>
 
     <div class="ui four raised cards">
+        {% for filme in filmes %}
         <div class="ui card">
             <div class="image" width="314" height="512">
-                <img src="{% static 'images/dreamhorse.jpg' %}">
+                <img src="{{ filme.capa.url }}">
             </div>
             <div class="content">
-                <a class="header">Dream horse</a>
+                <a class="header">{{ filme.nome }}</a>
                 <div class="meta">
-                    <span class="date">Junho de 2021</span>
+                    <span class="date">{{ filme.data_lancamento }}</span>
                 </div>
             </div>
             <div class="extra content">
@@ -25,108 +26,9 @@
                 </a>
             </div>
         </div>
-        <div class="ui card">
-            <div class="image">
-                <img src="{% static 'images/thedry.jpg' %}">
-            </div>
-            <div class="content">
-                <a class="header">The dry</a>
-                <div class="meta">
-                    <span class="date">Janeiro de 2021</span>
-                </div>
-            </div>
-            <div class="extra content">
-                <a>
-                    <i class="thumbs up outline icon"></i>
-                    51 Likes
-                </a>
-            </div>
-        </div>
-        <div class="ui card">
-            <div class="image">
-                <img src="{% static 'images/finalaccount.jpg' %}">
-            </div>
-            <div class="content">
-                <a class="header">Final account</a>
-                <div class="meta">
-                    <span class="date">Maio de 2021</span>
-                </div>
-            </div>
-            <div class="extra content">
-                <a>
-                    <i class="thumbs up outline icon"></i>
-                    31 Likes
-                </a>
-            </div>
-        </div>
-        <div class="ui card">
-            <div class="image">
-                <img src="{% static 'images/americanfighter.jpg' %}">
-            </div>
-            <div class="content">
-                <a class="header">American fighter</a>
-                <div class="meta">
-                    <span class="date">Dezembro de 1988</span>
-                </div>
-            </div>
-            <div class="extra content">
-                <a>
-                    <i class="thumbs up outline icon"></i>
-                    321 Likes
-                </a>
-            </div>
-        </div>
-        <div class="ui card">
-            <div class="image">
-                <img src="{% static 'images/springblossom.jpg' %}">
-            </div>
-            <div class="content">
-                <a class="header">Spring blossom</a>
-                <div class="meta">
-                    <span class="date">Maio de 2021</span>
-                </div>
-            </div>
-            <div class="extra content">
-                <a>
-                    <i class="thumbs up outline icon"></i>
-                    76 Likes
-                </a>
-            </div>
-        </div>
-        <div class="ui card">
-            <div class="image">
-                <img src="{% static 'images/hitler.jpg' %}">
-            </div>
-            <div class="content">
-                <a class="header">When Hitler stole pink rabbit</a>
-                <div class="meta">
-                    <span class="date">Dezembro de 2019</span>
-                </div>
-            </div>
-            <div class="extra content">
-                <a>
-                    <i class="thumbs up outline icon"></i>
-                    5 Likes
-                </a>
-            </div>
-        </div>
-        <div class="ui card">
-            <div class="image">
-                <img src="{% static 'images/seance.jpg' %}">
-            </div>
-            <div class="content">
-                <a class="header">Seance</a>
-                <div class="meta">
-                    <span class="date">Novembro de 2021</span>
-                </div>
-            </div>
-            <div class="extra content">
-                <a>
-                    <i class="thumbs up outline icon"></i>
-                    68 Likes
-                </a>
-            </div>
-        </div>
+        {% endfor %}
+    </div>
+
     </div>
 
     <script src="{% static 'js/home.js' %}"></script>
