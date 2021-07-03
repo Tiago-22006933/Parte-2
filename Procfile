@@ -1,1 +1,1 @@
-web: gunicorn Parte-2.wsgi --log-file -
+web: gunicorn lmdb.wsgi --log-file -
